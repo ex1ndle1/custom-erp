@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+
 # Create your models here.
+
 
 
 class Teacher(models.Model):
@@ -41,7 +43,7 @@ class Course(models.Model):
     slug = models.SlugField(max_length=200,unique=True)
     overview = models.TextField(null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    
+    image = models.ImageField(upload_to='images/' , blank=True , null= False)
     class Meta:
         ordering = ['-created_at']
 
@@ -103,10 +105,3 @@ class File(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
-
-class Image(ItemBase):
-    image = models.ImageField(upload_to='images')
-
-
-
-
