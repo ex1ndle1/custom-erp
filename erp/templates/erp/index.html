@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="{%  static 'erp/css/style.css' %}">
+    <link rel="stylesheet" href="{%  static 'erp/css/style1.css' %}">
     <meta charset="utf-8">
     <title>Edukate - Online Education Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -231,8 +231,8 @@
     <div class="owl-carousel courses-carousel">
         {% for course in courses %}
         <div class="courses-item position-relative">
-            <!-- Здесь можно динамически подключать изображение, если есть поле image -->
-            <img class="img-fluid" src="{% static 'erp/img/courses-1.jpg' %}" alt="{{ course.title }}">
+        
+            <img class="img-fluid" src="{{ course.image.url }}" alt="{{ course.title }}">
             <div class="courses-text">
                 <h4 class="text-center text-white px-3">{{ course.title }}</h4>
                 <div class="border-top w-100 mt-3">

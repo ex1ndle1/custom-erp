@@ -28,7 +28,7 @@ class Teacher(models.Model):
 class Subject(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200,unique=True)
-    
+    homework = models.CharField(max_length=500, default='No homework', null=False)
     class Meta:
         ordering = ['title']
         
@@ -55,7 +55,7 @@ class Module(models.Model):
     course = models.ForeignKey(Course,related_name='modules',on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     overview = models.TextField(null=True,blank=True)
-    
+    subject = models.ForeignKey(Subject, related_name='modules', on_delete=models.CASCADE, null=True )
     def __str__(self):
         return self.title
 

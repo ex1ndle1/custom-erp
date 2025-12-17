@@ -9958,3 +9958,82 @@ h6,
 .testimonial-carousel .owl-nav .owl-prev:hover {
   background: #2878EB;
 }
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* ===== MODULE CARD ===== */
+.module-card {
+    background: #fff;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+/* ===== HEADER ===== */
+.module-header {
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-header h2 {
+    font-size: 22px;
+    color: #2c3e50;
+}
+
+.arrow {
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+/* ===== SUBJECTS ===== */
+.subjects {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    background: #f8f9fc;
+}
+
+.subject-item {
+    padding: 15px 25px;
+    border-top: 1px solid #e5e7eb;
+    color: #34495e;
+}
+
+.subject-item:hover {
+    background: #eef3ff;
+}
+
+.empty {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+}
+
+/* ===== ACTIVE STATE ===== */
+.module-card.active .subjects {
+    max-height: 500px; /* достаточно для списка */
+}
+
+.module-card.active .arrow {
+    transform: rotate(180deg);
+}
+
+
+
+
+

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Course
 # Create your views here.
 from django.views.generic import DetailView,ListView
-from .models import Course
+from .models import Course,Module,Subject
 
 
 
@@ -17,7 +17,14 @@ class DetailViewPage(DetailView):
     context_object_name = 'course'
     pk_url_kwarg = 'course_id'
    
-
+     
+    def get_context_data(self, **kwargs):
+        
+        context =  super().get_context_data(**kwargs)
+        context['modules'] = Module.objects.all()
+        context['subjects'] = Subject.objects.all()
+        return  context
+    
 
 
 class CorsesViewPage(ListView):
@@ -27,4 +34,9 @@ class CorsesViewPage(ListView):
    
 
 
-
+class SubjectViewPage(DetailView):
+     template_name  = 'erp/subject.html'
+     model = Subject
+     pk_url_kwarg = 'subject_id'
+     context_object_name = 'subject'
+     

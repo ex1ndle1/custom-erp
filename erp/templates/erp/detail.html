@@ -8,10 +8,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-     <link rel="stylesheet" href="{% static 'erp/css/style.css' %}">
+     <link rel="stylesheet" href="{% static 'erp/css/style1.css' %}">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
+                 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
@@ -25,7 +25,11 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
+<style>
 
+
+
+</style>
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark">
@@ -136,8 +140,39 @@
                         </div>
                         <img class="img-fluid rounded w-100 mb-4" src="{{ course.image.url }}" alt="Image">
                 <p>{{ course.overview }}</p>
+ <div class="container">
+    <h1 class="page-title"> Modules</h1>
 
-                    </div>
+    {% for module in modules %}
+    <div class="module-card">
+
+        <!-- MODULE HEADER -->
+        <div class="module-header">
+            <h2>{{ module.title }}</h2>
+            <span class="arrow">⌄</span>
+        </div>
+
+        <!-- SUBJECTS (hidden by default) -->
+        <div class="subjects">
+    {% for subject in subjects %}
+        <a href="{% url 'erp:subject' subject.id %}" class="subject-link">
+            <div class="subject-item">
+                {{ subject.title }}
+            </div>
+        </a>
+    {% empty %}
+        <p class="empty">No subjects</p>
+    {% endfor %}
+</div>
+
+
+    </div>
+    {% endfor %}
+</div>
+
+
+
+            </div>
 
                     <h2 class="mb-3">Related Courses</h2>
                     <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
@@ -383,7 +418,16 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+ <script>
+document.querySelectorAll('.module-header').forEach(header => {
+    header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('active');
+    });
+});
+</script>
+
+
+    
 </body>
 
 </html>
