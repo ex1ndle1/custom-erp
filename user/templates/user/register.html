@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Registration</h2>
+
+    {% if not code_sent %}
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Register</button>
+        </form>
+    {% endif %}
+
+    {% if code_sent %}
+        <div class="info">
+            Verification code has been sent to your email.
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="verification_code">Enter verification code:</label>
+            <input
+                type="text"
+                name="verification_code"
+                id="verification_code"
+                placeholder="Enter code"
+                required
+            >
+
+            <button type="submit">Verify</button>
+        </form>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
