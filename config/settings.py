@@ -42,6 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+
 ]
 
 MIDDLEWARE = [
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -137,3 +145,19 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
+
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google':{
+        'APP': getenv('GOOGLE_APP'),
+        'secret':getenv('GOOGLE_SECRET'),
+        'key': ''
+    }, 
+    'github':{
+        'APP':getenv('GITHUB_APP'),
+        'secret':getenv('GITHUB_SECRET')
+        ,
+        'key':''
+    }
+}

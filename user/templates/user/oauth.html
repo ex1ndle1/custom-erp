@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% load socialaccount %}
+
+<a class="btn btn-primary" href="{% provider_login_url 'google' %}">enter with google</a>
+<a class="btn btn-primary" href="{% provider_login_url 'github' %}">enter with git hub</a>
+</body>
+</html>

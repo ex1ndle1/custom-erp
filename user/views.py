@@ -46,3 +46,8 @@ def activate(request, uidb64, token):
         return redirect('erp:home')
     else:
         return HttpResponse('Something wrong.')
+    
+
+
+def oauth_register(request):
+    return render(request, 'user/oauth.html')
