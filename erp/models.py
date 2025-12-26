@@ -5,7 +5,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 # Create your models here.
 
 
-
 class Teacher(models.Model):
     full_name = models.CharField(max_length=255)
     bio = models.TextField(blank=True)
@@ -24,14 +23,13 @@ class Teacher(models.Model):
         return self.full_name
 
 
-
 class Subject(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200,unique=True)
     homework = models.CharField(max_length=500, default='No homework', null=False)
     class Meta:
         ordering = ['title']
-        
+    
     def __str__(self):
         return self.title
 
@@ -105,3 +103,4 @@ class File(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
+

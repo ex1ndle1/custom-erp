@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-x_3(kd+y2+q*&8hmxw$p=09n3vt_vpp*3jq$^jt8_(bw@o!aro
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'HOST':'localhost',
+       'HOST':'db',
          'NAME':'custom_erp',                                           
          'PORT':'5432',
          'USER':'muza',
@@ -153,15 +153,18 @@ EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
 SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
-    'google':{
-        'APP': getenv('GOOGLE_APP'),
-        'secret':getenv('GOOGLE_SECRET'),
-        'key': ''
-    }, 
-    'github':{
-        'APP':getenv('GITHUB_APP'),
-        'secret':getenv('GITHUB_SECRET')
-        ,
-        'key':''
+    'google': {
+        'APP': {
+            'client_id': getenv('GOOGLE_CLIENT_ID'),
+            'secret': getenv('GOOGLE_SECRET'),
+            'key': ''
+        }
+    },
+    'github': {
+        'APP': {
+            'client_id': getenv('GITHUB_CLIENT_ID'),
+            'secret': getenv('GITHUB_SECRET'),
+            'key': ''
+        }
     }
 }

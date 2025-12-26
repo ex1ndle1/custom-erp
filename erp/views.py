@@ -33,10 +33,9 @@ class CorsesViewPage(ListView):
     context_object_name = 'courses'
    
 
-
 class SubjectViewPage(DetailView):
      template_name  = 'erp/subject.html'
      model = Subject
      pk_url_kwarg = 'subject_id'
      context_object_name = 'subject'
-     
+

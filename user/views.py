@@ -30,6 +30,7 @@ def register(request):
             return render(request, 'user/register.html')
     else:
         form = UserRegisterForm()
+        
     return render(request, 'user/register.html', {'form': form})
 
 def activate(request, uidb64, token): 
@@ -51,3 +52,6 @@ def activate(request, uidb64, token):
 
 def oauth_register(request):
     return render(request, 'user/oauth.html')
+
+
+
