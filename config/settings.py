@@ -30,7 +30,11 @@ DEBUG = getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+RAILWAY_PUBLIC_DOMAIN =getenv('RAILWAY_PUBLIC_DOMAIN')
 
+if RAILWAY_PUBLIC_DOMAIN:
+ 
+    CSRF_TRUSTED_ORIGINS = [f'https://{RAILWAY_PUBLIC_DOMAIN}']
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -60,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -132,6 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = path.join(BASE_DIR, 'saticfiles')
+STATICFILES_DIRS = [path.join(BASE_DIR, 'static'),]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
