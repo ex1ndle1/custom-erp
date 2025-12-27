@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,19 +81,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+import os   
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'HOST':'db',
-         'NAME':'custom_erp',                                           
-         'PORT':'5432',
-         'USER':'muza',
-         'PASSWORD':'123'
-    }
+    'default': dj_database_url.config(
+        
+
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
 
 
