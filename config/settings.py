@@ -176,8 +176,3 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(username='muza').exists():
-    User.objects.create_superuser(username='muza', email=None, password='123')
