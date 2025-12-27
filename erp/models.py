@@ -41,7 +41,7 @@ class Course(models.Model):
     slug = models.SlugField(max_length=200,unique=True)
     overview = models.TextField(null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='images/' , blank=True , null= False)
+    image = models.ImageField( blank=True , null= False)
     class Meta:
         ordering = ['-created_at']
 
