@@ -13,7 +13,8 @@ import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from os import getenv, path
+
+import os
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,11 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x_3(kd+y2+q*&8hmxw$p=09n3vt_vpp*3jq$^jt8_(bw@o!aro'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
-RAILWAY_PUBLIC_DOMAIN =getenv('RAILWAY_PUBLIC_DOMAIN')
+RAILWAY_PUBLIC_DOMAIN =os.getenv('RAILWAY_PUBLIC_DOMAIN')
 
 if RAILWAY_PUBLIC_DOMAIN:
  
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'storages',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -86,7 +88,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+SUPABASE_URL = os.environ.get('SUPABASE_URL')
+SUPABASE_API_KEY = os.environ.get('SUPABASE_API_KEY')
 
+SUPABASE_BUCKET_NAME = 'media' 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -95,7 +100,7 @@ DATABASES = {
     'default': dj_database_url.config(
         
 
-        default=getenv('DATABASE_URL'),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600
     )
 }
@@ -136,8 +141,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [path.join(BASE_DIR,'erp', 'static'),]
-STATIC_ROOT = path.join(BASE_DIR, 'staticfiles') 
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'erp', 'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -155,24 +160,27 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587          
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': getenv('GOOGLE_CLIENT_ID'),
-            'secret': getenv('GOOGLE_SECRET'),
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),
+            'secret': os.getenv('GOOGLE_SECRET'),
             'key': ''
         }
     },
     'github': {
         'APP': {
-            'client_id': getenv('GITHUB_CLIENT_ID'),
-            'secret': getenv('GITHUB_SECRET'),
+            'client_id': os.getenv('GITHUB_CLIENT_ID'),
+            'secret': os.getenv('GITHUB_SECRET'),
             'key': ''
         }
     }
 }
+
+DEFAULT_FILE_STORAGE = 'django_storage_supabase.storage.SupabaseStorage'
+
