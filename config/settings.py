@@ -137,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [path.join(BASE_DIR, 'static'),]
-STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = path.join(BASE_DIR, 'staticfiles') # Убедитесь, что буква 't' на месте
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
