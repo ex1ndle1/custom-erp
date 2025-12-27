@@ -88,10 +88,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
 SUPABASE_API_KEY = os.environ.get('SUPABASE_API_KEY')
-
 SUPABASE_BUCKET_NAME = 'media' 
+
+SUPABASE_STORAGE_URL = SUPABASE_URL
+SUPABASE_STORAGE_KEY = SUPABASE_API_KEY
+SUPABASE_STORAGE_BUCKET = SUPABASE_BUCKET_NAME
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
