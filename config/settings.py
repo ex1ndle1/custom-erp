@@ -154,7 +154,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = f'{SUPABASE_URL}/storage/v1/object/public/media/'
+MEDIA_URL = 'https://supabase.com/dashboard/project/bfknjpdjincygyjexjog/storage/files/buckets/media'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
