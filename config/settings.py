@@ -109,7 +109,7 @@ AWS_S3_FILE_OVERWRITE = False
 
 MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/'
 
-print("SUPABASE_PROJECT_ID:", bool(os.getenv("SUPABASE_PROJECT_ID")))
+print("SUPABASE_PROJECT_ID:", bool(os.getenv("SUPABASE_URL")))
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
