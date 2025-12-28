@@ -90,11 +90,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
-SUPABASE_API_KEY = os.environ.get('SUPABASE_API_KEY')
+SUPABASE_KEY = os.environ.get('SUPABASE_API_KEY')
 SUPABASE_BUCKET_NAME = 'media' 
 
 SUPABASE_STORAGE_URL = SUPABASE_URL
-SUPABASE_STORAGE_KEY = SUPABASE_API_KEY
+SUPABASE_STORAGE_KEY = SUPABASE_KEY
 SUPABASE_STORAGE_BUCKET = SUPABASE_BUCKET_NAME
 
 # Database
@@ -147,14 +147,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'erp', 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-
+SUPABASE_PROJECT_ID = 'bfknjpdjincygyjexjog'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = 'https://supabase.com/dashboard/project/bfknjpdjincygyjexjog/storage/files/buckets/media'
+MEDIA_URL = f'https://{SUPABASE_PROJECT_ID}.supabase.co/storage/v1/object/public/{SUPABASE_BUCKET_NAME}/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
