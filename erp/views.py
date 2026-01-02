@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Course
 # Create your views here.
 from django.views.generic import DetailView,ListView
-from .models import Course,Module,Subject
+from .models import Course,Module,Subject,Teacher
 
 
 
@@ -39,3 +39,10 @@ class SubjectViewPage(DetailView):
      pk_url_kwarg = 'subject_id'
      context_object_name = 'subject'
 
+
+
+class TeamView(ListView):
+    template_name = 'erp/team.html'
+    model = Teacher
+    context_object_name = 'teachers'
+    

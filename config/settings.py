@@ -110,12 +110,12 @@ AWS_DEFAULT_ACL = None
 AWS_S3_FILE_OVERWRITE = False
 
 MEDIA_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/storage/v1/object/public/{AWS_STORAGE_BUCKET_NAME}/"
-print("SUPABASE_PROJECT_ID:", bool(os.getenv("SUPABASE_URL")))
-print("ALL ENV KEYS:", list(os.environ.keys()))
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+if DEBUG:
 
-DATABASES = {
+ DATABASES = {
     'default': dj_database_url.config(
         
 
@@ -123,8 +123,19 @@ DATABASES = {
         conn_max_age=600,
         conn_health_checks=True
     )
-}
+ }
+else:
+   DATABASES = {
+       'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'custom_erp',
+        'USER': 'muza',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 
+   }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
