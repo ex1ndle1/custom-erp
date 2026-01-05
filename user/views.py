@@ -9,6 +9,8 @@ from django.core.mail import EmailMessage
 from .forms import UserRegisterForm
 from django.http import HttpResponse
 
+
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
